@@ -4,7 +4,7 @@ struct ContentView: View {
     @StateObject var session = PracticeSession()
     @StateObject var engine = GameEngine()
     @State private var showDebug = false
-    @State private var bassClefOffset: CGFloat = -10
+    @State private var bassClefOffset: CGFloat = -190
     
     var body: some View {
         switch session.appState {

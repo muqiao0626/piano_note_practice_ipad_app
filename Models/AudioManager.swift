@@ -17,6 +17,15 @@ class AudioManager {
         engine = AVAudioEngine()
         player = AVAudioPlayerNode()
         
+        // Configure Audio Session for iOS
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback, mode: .default, options: [.mixWithOthers])
+            try session.setActive(true)
+        } catch {
+            print("Failed to configure audio session: \(error)")
+        }
+        
         guard let engine = engine, let player = player else { return }
         
         engine.attach(player)
